@@ -21,6 +21,7 @@ const addBooksHandler = (request, h) => {
 
         response.code(400);
         return response;
+        
     }
 
     if (readPage > pageCount) {
@@ -35,10 +36,10 @@ const addBooksHandler = (request, h) => {
 
     const id = nanoid(16);
     const insertedAt = new Date().toISOString();
-    const updateAt = insertedAt;
-    const finished = (pageCount === readPage);
+    const updatedAt = insertedAt;
+    const finished = pageCount === readPage;
 
-    const newBook= {
+    const newBook = {
         id,
         name,
         year,
@@ -50,7 +51,7 @@ const addBooksHandler = (request, h) => {
         finished,
         reading,
         insertedAt,
-        updateAt
+        updatedAt
     };
 
     books.push(newBook);
